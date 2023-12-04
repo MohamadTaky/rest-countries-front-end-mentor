@@ -16,7 +16,7 @@ export default async function CountryDetailsPage({ params: { country } }: { para
           height={600}
           src={flags.svg}
           alt={`${name.common} flag`}
-          className="w-full object-contain drop-shadow-md lg:max-w-md"
+          className="aspect-[3/2] w-full object-contain drop-shadow-md lg:max-w-md"
         />
         <div className="my-4 flex-1">
           <h2 className="mb-4 text-3xl font-bold">{name.common}</h2>
@@ -54,7 +54,7 @@ export default async function CountryDetailsPage({ params: { country } }: { para
             <p className="max-sm:w-full">Border Countries :</p>
             {borders.length ? (
               borders.map((border) => (
-                <li className="w-full whitespace-nowrap sm:min-w-[6rem] sm:w-fit" key={border}>
+                <li className="w-full whitespace-nowrap sm:w-fit sm:min-w-[6rem]" key={border}>
                   <Button className="w-full" size="sm" asChild>
                     <Link href={`/${border.toLowerCase()}`}>{border}</Link>
                   </Button>

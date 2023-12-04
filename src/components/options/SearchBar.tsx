@@ -3,22 +3,17 @@
 import useDebounce from "@/hooks/useDebounce";
 import { SearchIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 
 export default function SearchBar() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [search, setSearch] = useState("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
-
-  useDebounce(() => {
+  const debouncedCallback = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("page", "1");
-    if (!search) params.delete("search");
-    else params.set("search", search);
+    if (!e.target.value) params.delete("search");
+    else params.set("search", e.target.value);
     router.replace(`?${params.toString()}`);
   }, 1000);
 
@@ -32,8 +27,7 @@ export default function SearchBar() {
         id="search"
         className="h-10 w-full bg-transparent px-4 py-2 font-light outline-none placeholder:text-input md:px-8 md:py-4"
         placeholder="Search for a country..."
-        value={search ?? searchParams.get("search")}
-        onChange={handleChange}
+        onChange={debouncedCallback}
       />
     </div>
   );

@@ -15,8 +15,8 @@ export default function PaginationControls({ hasPrevPage, hasNextPage }: Paginat
   const currentPage = Number(searchParams.get("page") ?? "1");
   const itemsPerPage = Number(searchParams.get("perPage") ?? "10");
 
-  const handleNextClick = () => router.push(`?page=${currentPage + 1}&perPage=${itemsPerPage}`);
   const handlePrevClick = () => router.push(`?page=${currentPage - 1}&perPage=${itemsPerPage}`);
+  const handleNextClick = () => router.push(`?page=${currentPage + 1}&perPage=${itemsPerPage}`);
 
   return (
     <div className="mt-8 flex items-center justify-center gap-4">

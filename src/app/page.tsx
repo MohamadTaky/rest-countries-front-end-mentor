@@ -3,7 +3,7 @@ import CountriesCountMenu from "@/components/options/CountriesCountMenu";
 import FilterMenu from "@/components/options/FilterMenu";
 import SearchBar from "@/components/options/SearchBar";
 import { Suspense } from "react";
-import SkeletonLoader from "./loading";
+import SkeletonLoader from "@/components/loading/SkeletonLoader";
 
 export default async function Home({
   searchParams,
@@ -24,8 +24,8 @@ export default async function Home({
     <>
       <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row">
         <SearchBar />
-        <CountriesCountMenu />
-        <FilterMenu />
+        {/* <CountriesCountMenu /> */}
+        {/* <FilterMenu /> */}
       </div>
       <Suspense key={params.toString()} fallback={<SkeletonLoader />}>
         {/* @ts-ignore */}
