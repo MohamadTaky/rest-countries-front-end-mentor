@@ -54,7 +54,7 @@ export default async function CountryDetailsPage({ params: { country } }: { para
             <p className="max-sm:w-full">Border Countries :</p>
             {borders.length ? (
               borders.map((border) => (
-                <li className="w-full sm:w-32" key={border}>
+                <li className="w-full whitespace-nowrap sm:min-w-[6rem] sm:w-fit" key={border}>
                   <Button className="w-full" size="sm" asChild>
                     <Link href={`/${border.toLowerCase()}`}>{border}</Link>
                   </Button>
