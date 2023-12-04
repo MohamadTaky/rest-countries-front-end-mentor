@@ -6,9 +6,10 @@ export default function useEventListener<K extends keyof DocumentEventMap>(
 ) {
 	const savedhandler = useRef(handler);
 	useEffect(() => {
-		document.addEventListener(type, savedhandler.current);
+		const eventhandler = savedhandler.current;
+		document.addEventListener(type, eventhandler);
 		return () => {
-			document.removeEventListener(type, savedhandler.current);
+			document.removeEventListener(type, eventhandler);
 		};
 	}, [type]);
 }

@@ -13,5 +13,5 @@ export default function useOnClickOutside(ref: RefObject<HTMLElement>, handler: 
 			document.removeEventListener("click", handleClick);
 			document.removeEventListener("touchstart", handleClick);
 		};
-	}, []);
+	}, [ref, handler]);
 }
